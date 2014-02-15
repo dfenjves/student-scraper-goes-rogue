@@ -3,6 +3,11 @@ class StudentScraper
 		@student_doc = Nokogiri::HTML(open(student_url))
 	end
 
+		def scrape
+		scrape_info
+		create_student_instance
+	end
+
 	def scrape_info
 		@student_name = @student_doc.css('h4.ib_main_header').text
 		@bio = @student_doc.css('div#ok-text-column-2 div.services p:first-of-type').first.text.strip
@@ -23,12 +28,8 @@ class StudentScraper
 		@student.name = @student_name
 		@student.bio = @bio
 		@student.photo = @photo
-		# @student.save
-		# @student
-	end
-
-	def scrape
-		scrape_info
-		create_student_instance
+		@student.save
+		@student
 	end
 end
+

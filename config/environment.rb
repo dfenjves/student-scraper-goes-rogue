@@ -1,5 +1,5 @@
 require 'sqlite3'
-require 'nokogiri'
+require 'Nokogiri'
 require 'open-uri'
 
 require_relative '../lib/index_scraper'
